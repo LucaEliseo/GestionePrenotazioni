@@ -35,24 +35,15 @@ public class Runner implements ApplicationRunner{
 		@Override
 		public void run(ApplicationArguments args) throws Exception {
 		System.out.println("Run..");
-		//Test di tutte le funzionalità richieste:
 		
 		
 		utenteService.createFakeUtente();
 		utenteService.createFakeUtente();
 
 		edificioService.createFakeEdificio();
-		//postazioneService.createPostazione("postazione wow", Tipo_postazione.OPENSPACE, 20, edificioService.findEdificioById(1l),null);
-		//prenotazioneService.createPrenotazione(utenteService.findUtenteById(1l), postazioneService.findPostazioneById(1l), LocalDate.now().plusDays(2));
-		//prenotazioneService.createPrenotazione(utenteService.findUtenteById(2l), postazioneService.findPostazioneById(1l), LocalDate.now().plusDays(2));//non lo fa aggiungere perchè la postazione è occupata per quella data come richiesto
-		prenotazioneService.createPrenotazione(utenteService.findUtenteById(1l), postazioneService.findPostazioneById(2l), LocalDate.now().plusDays(2)); //non lo fa aggiungere perchè l utente 1 ha già prenotato in quella data come richiesto
+		prenotazioneService.createPrenotazione(utenteService.findUtenteById(1l), postazioneService.findPostazioneById(2l), LocalDate.now().plusDays(2));
 
-		List<Postazione>p=postazioneDAORepository.findByCittàAndTipologia("San Arturo",Tipo_postazione.PRIVATO); //Questo era il nome fake della città che mi ha creato 
-		p.forEach(e->System.out.println(e.getId())); //funziona! riesce a trovare la postazione cercando per città e tipologia come richiesto
-		//List<Prenotazione> p3= prenotazioneDAORepository.findByDataBetween(LocalDate.now(), LocalDate.now().plusDays(2),postazioneService.findPostazioneById(1l) );
-			//p3.forEach(e->System.out.println(e.getId()));
-		
-		//Anche quessta query funziona!
+		List<Postazione>p=postazioneDAORepository.findByCittàAndTipologia("Napoli",Tipo_postazione.PRIVATO);
 		
 		}
 

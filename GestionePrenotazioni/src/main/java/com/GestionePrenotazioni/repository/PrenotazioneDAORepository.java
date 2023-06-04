@@ -13,8 +13,6 @@ import com.GestionePrenotazioni.model.Utente;
 @Repository
 public interface PrenotazioneDAORepository extends CrudRepository<Prenotazione, Long>{
 	public Prenotazione findByData(LocalDate data);
-	//public List<Prenotazione> findByUsernameAndLastname(String uername, String lastname);
-	//public List<Utente> findByAgeBetween(Integer min, Integer max);
 	
 	@Query(value="SELECT u FROM Prenotazione u WHERE u.data BETWEEN :data1 and :data2 and u.postazione= :p")
 	public List<Prenotazione> findByDataBetween(LocalDate data1,LocalDate data2,Postazione p );
